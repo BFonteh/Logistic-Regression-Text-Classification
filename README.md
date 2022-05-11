@@ -1,4 +1,4 @@
-# Problem understanding: Text Classification using Full Convolutional NN #
+# Naive Base Classification #
 In this toy project, we aim to build a naive bayes clssifier that predicts whether the language cotegory of a given text.
 
 • We wrote a function to load the data
