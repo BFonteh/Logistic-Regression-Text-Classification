@@ -10,4 +10,4 @@ def compute_accuracy(w, valid_data):
       if pred == y_i:
         accuracy+=1.0
   
-    return (accuracy/float(len(valid_data))) * 100.00
+    return (accuracy/float(len(valid_data))) * 100.00  

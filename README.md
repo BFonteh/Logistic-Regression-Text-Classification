@@ -1,12 +1,12 @@
-# Naive Base Classification #
-In this toy project, we aim to build a naive bayes clssifier that predicts whether the language cotegory of a given text.
+#Multiclass Logistic  Classification #
+In this toy project, we aim to build a multiclass logistic clssifier that predicts the language cotegory of a given text.
 
 • We wrote a function to load the data
 
 • Yet another function was written to train the model
 • We finally wrote a prediction and accuracy function
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VN_s9g8EvytZRhcGSD-93Mxl4RsaJvwH?usp=sharing)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1rELOKvOo8Tthu1qCyf4APetfIT1mAFKy?usp=sharing)
 
 # Run the project #
 In this project, we have two steps: training and predicting. In the predict step, you can type a sentence as a review  and predict it. Let's show you how to run the project.
@@ -40,7 +40,7 @@ $ python3 main.py
 # Results Presentation
 
 ```Validation Accuracy result```  </br>
-![caption](figures/naivebayes_results.png) 
+![caption](figures/results_logisticR.png) 
 
 
 # Make prediction #
