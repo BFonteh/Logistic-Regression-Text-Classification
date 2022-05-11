@@ -1,14 +1,20 @@
 from data import data_loader
-from train import count_words
+from train import sgd
 from accuracy import compute_accuracy
+import numpy as np
+
 print("")
-print("** Naive Bayes **")
+print("** Logistic Regression **")
 print("")
 
-mu = 0.00001
-train_data = data_loader.load_data("data/train1.txt")
-valid_data = data_loader.load_data("data/valid1.txt")
-counts = count_words(train_data)
+word_dict, label_dict = data_loader.build_dict("data/train1.txt")
+train_data = data_loader.load_data("data/train1.txt", word_dict, label_dict)
+valid_data = data_loader.load_data("data/valid1.txt", word_dict, label_dict)
 
-print("Validation accuracy: %.3f" % compute_accuracy(valid_data, mu, counts))
+nlabels = len(label_dict)
+dim = len(word_dict)
+w = np.zeros([nlabels, dim])
+w = sgd(w, train_data, 7)
+print("")
+print("Validation accuracy: %.3f" % compute_accuracy(w, valid_data))
 print("")

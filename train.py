@@ -1,23 +1,21 @@
-import io, sys, math, re
-from collections import defaultdict
-
-def count_words(data):
-    n_examples = 0
-    n_words_per_label = defaultdict(lambda: 0)
-    label_counts = defaultdict(lambda: 0)
-    word_counts = defaultdict(lambda: defaultdict(lambda: 0.0))
-    
-    for example in data:
-      label, sentence = example
-      n_examples += 1
-      label_counts[label]  +=1
-
-      for word in sentence:
-        word_counts[label][word] += 1
-        n_words_per_label[label] += 1
-
-
-    return {'label_counts': label_counts, 
-            'word_counts': word_counts, 
-            'n_examples': n_examples, 
-            'n_words_per_label': n_words_per_label}
+import numpy as np
+import math
+from predict import softmax
+def sgd(w, data, niter):
+    nlabels, dim = w.shape
+    for iter in range(niter):
+      train_err= 0.0
+      for yi, xi in data:
+        pred= softmax(np.dot(w, xi))
+        # print(pred[yi])
+        # break
+        train_err+= math.log(pred[yi])
+ 
+        # gradient is the partial derivative of train error with respect to w.
+        zero_vec=np.zeros(nlabels)
+        zero_vec[yi]= 1.0
+        error= pred-zero_vec
+        gradient= error.reshape(nlabels, 1)*xi.reshape((1, dim))
+        w= w- 0.5*gradient
+      print("iter: %02d loss: %.3f" % (iter, train_err/len(data)))
+    return w
